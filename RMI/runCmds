@@ -1,0 +1,12 @@
+#Start the RMI registry
+rmiregistry &
+
+#Starting the Server -- ComputeEngine
+java -cp ~/bigwavedata/java_study/RMI/src:~/bigwavedata/java_study/RMI/bin/compute.jar
+     -Djava.security.policy=server.policy
+        com.big.wave.ComputeWork
+
+     -Djava.rmi.server.codebase=http://mycomputer/~ann/classes/compute.jar
+     -Djava.rmi.server.hostname=mycomputer.example.com
+
+

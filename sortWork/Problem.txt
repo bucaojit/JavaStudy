@@ -1,0 +1,2 @@
+Implement different types of sorts and have a timer method to measure how long the sort takes.
+

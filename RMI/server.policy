@@ -1,0 +1,3 @@
+grant codeBase "file:~/bigwavedata/java_study/RMI/" {
+   permission java.security.AllPermission;
+};
