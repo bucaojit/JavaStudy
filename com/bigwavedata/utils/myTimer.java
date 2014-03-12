@@ -17,6 +17,26 @@ public class myTimer {
 		System.out.flush();
 	}
 }
+/*
+Thread thread = new Thread()
+{
+public void run()
+{
+    while (true){
+        System.out.println("Hello World");
+        try
+        {
+        
+            Thread.sleep(1000); // 1 second
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
+};
+thread.start();
+*/
 
 /*
 // Timer examples

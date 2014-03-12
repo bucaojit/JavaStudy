@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 // my Java implementation of:
 //    http://leetcode.com/2010/09/how-to-pretty-print-binary-tree.html
+//    3/11 -- Taking a break to work on other things
 public class BSTPrintPretty {
 	public static void printTree(node inputNode) throws IOException {
 		if(inputNode == null) {
