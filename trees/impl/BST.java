@@ -2,6 +2,7 @@ package trees.impl;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Stack;
 
 public class BST implements Iterable<Integer>{
 	private node root;
@@ -74,7 +75,41 @@ public class BST implements Iterable<Integer>{
 		int rightHeight = maxHeight(input.getRight());
 		return (leftHeight > rightHeight? leftHeight + 1 : rightHeight + 1);
 	}
+	
+	public void traverseNonRecursive() {
+		traverseNonRecursive(root);
+	}
 
+	public void traverseNonRecursive(node inputNode) {
+		if (inputNode == null) 
+			return;
+
+		Stack<node> treeNodes = new Stack<node> ();
+
+		node topNode = inputNode;
+		do {
+			// need a current node state so you don't traverse from wherever you are
+			//node currentNode = treeNodes.peek();
+			// left, root, right
+			// remove item from top of stack
+			//node topNode = treeNodes.pop();			
+			// if left, add to stack
+			if(topNode != null) {
+				treeNodes.add(topNode);
+				topNode = topNode.getLeft();
+				//continue;
+			}		
+			else {
+				// else remove from stack, print data
+				topNode = treeNodes.pop();
+				System.out.println("Data: " + topNode.data);									
+				topNode = topNode.getRight();
+
+			}
+		}while(treeNodes.size() > 0 || topNode != null);
+	}
+	
+	
 	@Override
 	public Iterator iterator() {
 		BSTiterator myIterator = new BSTiterator(this);

@@ -108,6 +108,7 @@ public class breadthFirstSearch extends BST{
 		btree.insert(3);
 		btree.insert(100);
 		btree.printTree();
+		btree.traverseNonRecursive();
 		//btree.anotherPrintTree();
 		
 		Iterator<Integer> myIt = btree.iterator();
