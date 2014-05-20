@@ -8,7 +8,8 @@ import java.util.Iterator;
 // my Java implementation of:
 //    http://leetcode.com/2010/09/how-to-pretty-print-binary-tree.html
 //    3/11 -- Taking a break to work on other things
-public class BSTPrintPretty {
+//    5/19 -- revisiting. need to figure out spacing calculations
+public class BSTPrintPretty2 {
 	public static void printTree(node inputNode) throws IOException {
 		if(inputNode == null) {
 			//System.out.println("NULL");
@@ -25,31 +26,29 @@ public class BSTPrintPretty {
 			return;
 		}		
 		System.out.println("Print");
-		print(inputNode, 0, 0);
-		//printTree(inputNode.getLeft());
-		//System.out.println("Data: " + inputNode.data());
-		//printTree(inputNode.getRight());
+		print(inputNode, 0);
 	}
 	
-	public static void print(node inputNode, int level, int indentSpace) {
+	public static void print(node inputNode, int level) {
 		int height = maxHeight(inputNode);
 		int nodesInThisLevel = 1;
 		
 		// eq of the length of branch for each node of each level
-		int branchLength = 2*((int)Math.pow(2.0, height)-(3-level)*(int)Math.pow(2.0,height-1));
+		int nodeSpaceLen = (int)Math.pow(2.0,height);
+		int branchLength = 2*nodeSpaceLen;
 		// distance between left neighbor node's right arm and right neighbor node's left arm
-		int nodeSpaceLen = 2 + (level+1)*(int)Math.pow(2.0,height);
+		//int nodeSpaceLen = (int)Math.pow(2.0,height);
 		// starting space to the first node to print of each level (for the left most node of each level only)
-		int startLen = branchLength + (3-level) + indentSpace; 
+		int startLen = branchLength; 
 		
 		Deque<node> nodesQueue = new ArrayDeque<node>();
 		nodesQueue.add(inputNode);
 		
-		for (int i =1; i < nodesInThisLevel; i++) {
+		for (int i =1; i < height; i++) {
 			printBranches(branchLength, nodeSpaceLen, startLen, nodesInThisLevel, nodesQueue);
-			branchLength = branchLength/2-1;
-			nodeSpaceLen = nodeSpaceLen/2+1;
-			startLen = branchLength + (3-level) + indentSpace;
+			branchLength = branchLength/2;
+			nodeSpaceLen = nodeSpaceLen/2;
+			startLen = branchLength;
 			printNodes(branchLength, nodeSpaceLen, startLen, nodesInThisLevel, nodesQueue);
 			
 			for(int j = 0; j < nodesInThisLevel; j++) {
@@ -67,7 +66,7 @@ public class BSTPrintPretty {
 			nodesInThisLevel *= 2;
 		}
 		printBranches(branchLength, nodeSpaceLen, startLen, nodesInThisLevel, nodesQueue);
-		printLeaves(indentSpace, level, nodesInThisLevel, nodesQueue);
+		printLeaves(level, nodesInThisLevel, nodesQueue);
 	}
 	
 	public static void printBranches(int branchLen, int nodeSpaceLen, int startLen, 
@@ -86,7 +85,7 @@ public class BSTPrintPretty {
 		System.out.println();
 	}
 	
-	public static void printLeaves(int indentSpace, int level, int nodesInThisLevel,
+	public static void printLeaves(int level, int nodesInThisLevel,
 			                       Deque<node> nodesQueue) {
 		Iterator<node> it = nodesQueue.iterator();
 		for(int i = 0; i < nodesInThisLevel; i++,it.next()) {
@@ -104,7 +103,10 @@ public class BSTPrintPretty {
 	
 	public static void printNodes(int branchLen, int nodeSpaceLen, int startLen, 
 			int nodesInThisLevel, final Deque<node>nodesQueue) {
-		
+		Iterator<node> myIt = nodesQueue.iterator();
+		for(int i = 0; i < nodesInThisLevel; i ++) {
+			
+		}
 	}
 	
 	public static int maxHeight(node input) {

@@ -47,8 +47,8 @@ public class BST implements Iterable<Integer>{
 	
 	public void printTree() throws IOException {
 		printTree(root);
-		System.out.println("second print");
-		anotherPrintTree(root);
+		//System.out.println("second print");
+		//anotherPrintTree(root);
 	}
 	
 	public void printTree(node inputNode) throws IOException {
