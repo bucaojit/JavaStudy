@@ -32,6 +32,7 @@ public class heightAndLevels{
 			e.printStackTrace();
 		}
 	}
+	
 
 	public static void main(String[] args) {
 		
