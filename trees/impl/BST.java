@@ -19,6 +19,68 @@ public class BST implements Iterable<Integer>{
 		return root;
 	}
 	
+	public node findNode(int value) {
+		return findNode(root, value);
+	}
+	
+	public node findNode(node currentNode, int value) {
+		if (currentNode == null) 
+			return null;
+		if (currentNode.data() == value) 
+			return currentNode;
+		if (value > currentNode.data())
+			return findNode(currentNode.getRight(), value);
+		else
+			return findNode(currentNode.getLeft(), value);
+	}
+	
+	// To delete, need to find the parent
+	public node findParent(int value) {
+				
+		return findParent(root, value);
+	}
+	
+	public node findParent(node currentNode, int value) {
+		if (currentNode == null) {
+			return null;
+		}
+		if(currentNode.data() == value) {
+			// Cannot get parent, root is parent
+			return null;
+		}
+		if((currentNode.getLeft().data() == value) || currentNode.getRight().data() == value) {
+			return currentNode;
+		}
+		if(value > currentNode.data()) {
+			return findParent(currentNode.getRight(), value);
+		}
+		else
+			return findParent(currentNode.getLeft(), value);
+	}
+	
+	public void delete(int value) {
+		if(root == null) {
+			return;
+		}
+		delete(root, value);
+	}
+	
+	/*
+	  1. the value to remove is a leaf node; or
+      2. the value to remove has a right subtree, but no left subtree; or
+      3. the value to remove has a left subtree, but no right subtree; or
+      4. the value to remove has both a left and right subtree in which case we
+         promote the largest value in the left subtree.
+	 */
+	public void delete(node currentNode, int value) {
+		if(currentNode == null) {
+			return;
+		}
+		node parent = findParent(value);
+		
+		
+	}
+	
 	public void insert(int value) {
 		if(root == null) {
 			root = new node(value); 
