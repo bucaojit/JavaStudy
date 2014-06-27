@@ -100,7 +100,7 @@ public class BinarySearchRotated {
         System.out.println("Looking for key: " + searchKey + " in array --");
         System.out.println(list.toString());
         System.out.print("The index is: ");
-		System.out.println(bsr.findIndex(list, searchKey));
+        System.out.println(bsr.findIndex(list, searchKey));
 	}
 }
  
