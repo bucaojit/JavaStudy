@@ -28,10 +28,13 @@ public class BinarySearchRotated {
 			System.out.println("ERROR: Array size is less than 1");
 			return;
 		}
+		System.out.println(ar.toString());
 		int rots = rotations % ar.size();
-		for (int i = 0; i < ar.size(); i++) {
-			swap(ar, i, (i + rots)%ar.size());
-		}		
+		for ( int j =0; j < rots; j++)
+			for (int i = 0; i < ar.size()-1; i++) {
+				swap(ar, i, i+1);
+				System.out.println(ar.toString());
+			}		
 		System.out.println(ar.toString());
 	}
 	
@@ -41,19 +44,57 @@ public class BinarySearchRotated {
 		ar.set(secondIndex,  temp);
 	}
 	
-	public void createArrayRotated(List<Integer> ar, int size, int rotations) {
-		List<Integer> newList = new ArrayList<Integer>(size);
-		createArray(newList, size);
-		rotateArray(newList, rotations);
+	public void createArrayRotated(List<Integer> ar, int size, int rotations) {				
+		//List<Integer> newList = new ArrayList<Integer>(size);
+		createArray(ar, size);
+		rotateArray(ar, rotations);
 	}
 	
 	public int findIndex(List<Integer> ar, int key) {
-		return 0;
+		// Characteristics of a rotated array:
+		// Center to right, if center < right then right side is sorted
+		// Center to left, if left < center then left side is sorted
+		// Both sides may be sorted, meaning the array is not rotated.
+		// Still only need to check one side is sorted. 
+		if (ar.size() == 0) {
+			System.out.println("ERROR passed in empty array");
+			return -1;
+		}
+		
+		return findIndex(ar, key, 0, ar.size()-1);		
+	}
+	
+	private int getMid(int a, int b){
+		return (a + b)/2;
+	}
+	public int findIndex(List<Integer> ar, int key, int leftIndex, int rightIndex) {
+		int midPoint = getMid(leftIndex, rightIndex);
+		if(ar.get(midPoint) == key) return midPoint;
+		
+		if(leftIndex >= rightIndex) return -1;
+		
+		if(ar.get(midPoint) < ar.get(rightIndex)) {
+			// Right side is sorted
+			if(key >= ar.get(midPoint) && key <= ar.get(rightIndex)) 
+				return findIndex(ar, key, midPoint + 1, rightIndex);
+			else 
+				return findIndex(ar, key, leftIndex, midPoint -1);
+		}
+		else {
+			// Left side is sorted
+			if(key >= ar.get(leftIndex) && key <= ar.get(midPoint)) 
+				return findIndex(ar, key, leftIndex, midPoint - 1);
+			else
+				return findIndex(ar, key, midPoint + 1, rightIndex);
+		}
 	}
 	
 	public static void main(String[] args) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		BinarySearchRotated bsr = new BinarySearchRotated();
-		bsr.createArrayRotated(list, 10, 12);
+		bsr.createArrayRotated(list, 10, 6);
+		System.out.println(bsr.findIndex(list, 1));
+		
 	}
 }
+ 
