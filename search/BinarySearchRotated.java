@@ -28,14 +28,14 @@ public class BinarySearchRotated {
 			System.out.println("ERROR: Array size is less than 1");
 			return;
 		}
-		System.out.println(ar.toString());
+		//System.out.println(ar.toString());
 		int rots = rotations % ar.size();
 		for ( int j =0; j < rots; j++)
 			for (int i = 0; i < ar.size()-1; i++) {
 				swap(ar, i, i+1);
-				System.out.println(ar.toString());
+				//System.out.println(ar.toString());
 			}		
-		System.out.println(ar.toString());
+		//System.out.println(ar.toString());
 	}
 	
 	public void swap(List<Integer> ar, int firstIndex, int secondIndex) {
@@ -90,11 +90,17 @@ public class BinarySearchRotated {
 	}
 	
 	public static void main(String[] args) {
+                Integer searchKey = 9;
+                Integer rotations = 2;
+                Integer arraySize = 10;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		BinarySearchRotated bsr = new BinarySearchRotated();
-		bsr.createArrayRotated(list, 10, 6);
-		System.out.println(bsr.findIndex(list, 1));
+		bsr.createArrayRotated(list, arraySize, rotations);
 		
+        System.out.println("Looking for key: " + searchKey + " in array --");
+        System.out.println(list.toString());
+        System.out.print("The index is: ");
+		System.out.println(bsr.findIndex(list, searchKey));
 	}
 }
  
