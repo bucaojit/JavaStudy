@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
+
 /*
  * A long array A[] is given to you. 
  * There is a sliding window of size w which is moving from 
