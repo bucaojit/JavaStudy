@@ -45,7 +45,32 @@ public class Heap {
 	}
 	
 	private void remRefactor() {
-		
+		int index = 0;
+		boolean swapped = true;
+		while(swapped == true) {
+			System.out.println("heap.get(index) " + 
+					(heap.get(index)) != null? heap.get(index) : 0 + 
+					" heap.get(getLeftIndex(index) " + 
+					(heap.get(getLeftIndex(index))) != null ? + heap.get(getLeftIndex(index)) : 0 +
+					" heap.get(getRightIndex(index) " + 
+					//(heap.get(index)));
+					(heap.get(getRightIndex(index)) != null ? + heap.get(getLeftIndex(index)) : 0));
+			if(heap.size() -1 > getLeftIndex(index)) { 
+				if(heap.get(index) < heap.get(getLeftIndex(index))) {
+					swap(index, getLeftIndex(index));
+					index = getLeftIndex(index);
+					continue;
+				}
+			}
+			if(heap.size() -1 > getRightIndex(index)) { 
+				if(heap.get(index) < heap.get(getRightIndex(index))) {
+					swap(index,getRightIndex(index));
+					index = getRightIndex(index);
+					continue;
+				}
+			}
+			swapped = false;
+		}
 	}
 	
 	private int getParentIndex(int index) {
@@ -61,10 +86,17 @@ public class Heap {
 	}
 	
 	public void deleteTop() {
+		if(heap.size() == 0)
+			return;
+		if(heap.size() == 1) {
+			heap.clear();
+			return;
+		}
 		heap.set(0, heap.get(heap.size()-1));
 		heap.remove(heap.size()-1);
 		
 		remRefactor();
+		System.out.println(heap.toString());
 	}
 	
 	public static void main(String[] args) {
@@ -78,5 +110,10 @@ public class Heap {
 		heap.add(0);
 		heap.add(3);
 		heap.add(101);
+		heap.deleteTop();
+		heap.deleteTop();
+		heap.deleteTop();
+		heap.deleteTop();
+		heap.deleteTop();
 	}
 }
