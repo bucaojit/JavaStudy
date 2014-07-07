@@ -44,28 +44,40 @@ public class Heap {
 		heap.set(secondIndex, temp);
 	}
 	
+	// Important point learned while debugging this method is to 
+	// promote the larger of the two child nodes.  That will ensure
+	// that the maximum value will be at the top of the heap 
 	private void remRefactor() {
 		int index = 0;
 		boolean swapped = true;
 		while(swapped == true) {
-			System.out.println("heap.get(index) " + 
-					(heap.get(index)) != null? heap.get(index) : 0 + 
-					" heap.get(getLeftIndex(index) " + 
-					(heap.get(getLeftIndex(index))) != null ? + heap.get(getLeftIndex(index)) : 0 +
-					" heap.get(getRightIndex(index) " + 
-					//(heap.get(index)));
-					(heap.get(getRightIndex(index)) != null ? + heap.get(getLeftIndex(index)) : 0));
-			if(heap.size() -1 > getLeftIndex(index)) { 
-				if(heap.get(index) < heap.get(getLeftIndex(index))) {
-					swap(index, getLeftIndex(index));
-					index = getLeftIndex(index);
+			System.out.print("heap.get(index) ");
+			System.out.print( (heap.get(index)) != null? heap.get(index) : 0); 
+			System.out.print(" heap.get(getLeftIndex(index) ");
+			System.out.print(getLeftIndex(index) < heap.size() ? + heap.get(getLeftIndex(index)) : "null");
+			System.out.print(" heap.get(getRightIndex(index) ");				
+			System.out.print(getRightIndex(index) < heap.size() ? + heap.get(getRightIndex(index)) : "null");
+			System.out.println();
+			
+			if(heap.size() > getRightIndex(index)) { 
+				if(heap.get(index) < heap.get(getLeftIndex(index)) || 
+				   heap.get(index) < heap.get(getRightIndex(index))) {
+					if(heap.get(getLeftIndex(index)) > heap.get(getRightIndex(index))) {
+						swap(index, getLeftIndex(index));
+						index = getLeftIndex(index);
+					}
+					else {
+						swap(index, getRightIndex(index));
+						index = getRightIndex(index);
+					}
 					continue;
 				}
 			}
-			if(heap.size() -1 > getRightIndex(index)) { 
-				if(heap.get(index) < heap.get(getRightIndex(index))) {
-					swap(index,getRightIndex(index));
-					index = getRightIndex(index);
+			else if(heap.size() > getLeftIndex(index)) {
+				if(heap.get(index) < heap.get(getLeftIndex(index))) {
+							
+					swap(index, getLeftIndex(index));
+					index = getLeftIndex(index);													
 					continue;
 				}
 			}
@@ -92,6 +104,7 @@ public class Heap {
 			heap.clear();
 			return;
 		}
+		System.out.println("Removing: " + heap.get(0));
 		heap.set(0, heap.get(heap.size()-1));
 		heap.remove(heap.size()-1);
 		
