@@ -1,5 +1,6 @@
 package heaps;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Program a heap complete with comparator class that can be 
@@ -8,6 +9,7 @@ public class Heap {
 	// Implementing as an array
 	// First as fixed size, then as a resizing array
 	//private int nextFreeIndex;
+	private static final boolean DEBUG = false;
 	private static final int INITIAL_SIZE = 10;
 	private ArrayList<Integer> heap;
 	
@@ -51,13 +53,15 @@ public class Heap {
 		int index = 0;
 		boolean swapped = true;
 		while(swapped == true) {
-			System.out.print("heap.get(index) ");
-			System.out.print( (heap.get(index)) != null? heap.get(index) : 0); 
-			System.out.print(" heap.get(getLeftIndex(index) ");
-			System.out.print(getLeftIndex(index) < heap.size() ? + heap.get(getLeftIndex(index)) : "null");
-			System.out.print(" heap.get(getRightIndex(index) ");				
-			System.out.print(getRightIndex(index) < heap.size() ? + heap.get(getRightIndex(index)) : "null");
-			System.out.println();
+			if(DEBUG) {
+				System.out.print("heap.get(index) ");
+				System.out.print( (heap.get(index)) != null? heap.get(index) : 0); 
+				System.out.print(" heap.get(getLeftIndex(index) ");
+				System.out.print(getLeftIndex(index) < heap.size() ? + heap.get(getLeftIndex(index)) : "null");
+				System.out.print(" heap.get(getRightIndex(index) ");				
+				System.out.print(getRightIndex(index) < heap.size() ? + heap.get(getRightIndex(index)) : "null");
+				System.out.println();
+			}
 			
 			if(heap.size() > getRightIndex(index)) { 
 				if(heap.get(index) < heap.get(getLeftIndex(index)) || 
@@ -83,6 +87,13 @@ public class Heap {
 			}
 			swapped = false;
 		}
+	}
+	
+	public int peek() throws Exception{
+		if(heap.size() == 0) {
+			throw new Exception("Heap is empty");
+		}
+		return heap.get(0);
 	}
 	
 	private int getParentIndex(int index) {
