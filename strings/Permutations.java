@@ -18,9 +18,9 @@ public class Permutations {
 		}
 		else {
 			for (int j = startIndex ; j <= endIndex; j++) {
-				StringUtils.swap(str, startIndex, j);
+				str = StringUtils.swap(str, startIndex, j);
 				permutate(str,startIndex + 1, endIndex);
-				StringUtils.swap(str, startIndex, j);
+				str = StringUtils.swap(str, startIndex, j);
 			}
 		}
 	}
