@@ -5,25 +5,25 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class BST implements Iterable<Integer>{
-	private node root;
+	private Node root;
 	
-	public BST(node root) {
+	public BST(Node root) {
 		this.root = root;
 	}
 	
 	public BST(int value) {
-		this.root = new node(value);
+		this.root = new Node(value);
 	}
 	
-	public node root() {
+	public Node root() {
 		return root;
 	}
 	
-	public node findNode(int value) {
+	public Node findNode(int value) {
 		return findNode(root, value);
 	}
 	
-	public node findNode(node currentNode, int value) {
+	public Node findNode(Node currentNode, int value) {
 		if (currentNode == null) 
 			return null;
 		if (currentNode.data() == value) 
@@ -35,12 +35,12 @@ public class BST implements Iterable<Integer>{
 	}
 	
 	// To delete, need to find the parent
-	public node findParent(int value) {
+	public Node findParent(int value) {
 				
 		return findParent(root, value);
 	}
 	
-	public node findParent(node currentNode, int value) {
+	public Node findParent(Node currentNode, int value) {
 		if (currentNode == null) {
 			return null;
 		}
@@ -66,41 +66,41 @@ public class BST implements Iterable<Integer>{
 	}
 	
 	/*
-	  1. the value to remove is a leaf node; or
+	  1. the value to remove is a leaf Node; or
       2. the value to remove has a right subtree, but no left subtree; or
       3. the value to remove has a left subtree, but no right subtree; or
       4. the value to remove has both a left and right subtree in which case we
          promote the largest value in the left subtree.
 	 */
-	public void delete(node currentNode, int value) {
+	public void delete(Node currentNode, int value) {
 		if(currentNode == null) {
 			return;
 		}
-		node parent = findParent(value);
+		Node parent = findParent(value);
 		
 		
 	}
 	
 	public void insert(int value) {
 		if(root == null) {
-			root = new node(value); 
+			root = new Node(value); 
 			return;
 		}
 		insertNode(root, value);
 	}
 	
-	public void insertNode(node currentNode, int value) {
+	public void insertNode(Node currentNode, int value) {
 		// if value > current Node, insert into right
 		if (value > currentNode.data()) {
 			if(currentNode.getRight() == null)  {
-				currentNode.setRight(new node(value));
+				currentNode.setRight(new Node(value));
 				return;
 			}
 			insertNode(currentNode.getRight(), value);
 		}
 		else {
 			if(currentNode.getLeft() == null) {
-				currentNode.setLeft(new node(value));
+				currentNode.setLeft(new Node(value));
 				return;
 			}
 			insertNode(currentNode.getLeft(), value);
@@ -113,7 +113,7 @@ public class BST implements Iterable<Integer>{
 		//anotherPrintTree(root);
 	}
 	
-	public void printTree(node inputNode) throws IOException {
+	public void printTree(Node inputNode) throws IOException {
 		if(inputNode == null) {
 			return;
 		}
@@ -122,7 +122,7 @@ public class BST implements Iterable<Integer>{
 		printTree(inputNode.getRight());
 	}
 	
-	public void anotherPrintTree(node inputNode) throws IOException {
+	public void anotherPrintTree(Node inputNode) throws IOException {
 		BSTPrintPretty.printTree(inputNode);
 	}
 	
@@ -130,7 +130,7 @@ public class BST implements Iterable<Integer>{
 		return maxHeight(root);
 	}
 	
-	public int maxHeight(node input) {
+	public int maxHeight(Node input) {
 		if(input == null) 
 			return 0;
 		int leftHeight  = maxHeight(input.getLeft());
@@ -142,19 +142,19 @@ public class BST implements Iterable<Integer>{
 		traverseNonRecursive(root);
 	}
 
-	public void traverseNonRecursive(node inputNode) {
+	public void traverseNonRecursive(Node inputNode) {
 		if (inputNode == null) 
 			return;
 
-		Stack<node> treeNodes = new Stack<node> ();
+		Stack<Node> treeNodes = new Stack<Node> ();
 
-		node topNode = inputNode;
+		Node topNode = inputNode;
 		do {
-			// need a current node state so you don't traverse from wherever you are
-			//node currentNode = treeNodes.peek();
+			// need a current Node state so you don't traverse from wherever you are
+			//Node currentNode = treeNodes.peek();
 			// left, root, right
 			// remove item from top of stack
-			//node topNode = treeNodes.pop();			
+			//Node topNode = treeNodes.pop();			
 			// if left, add to stack
 			if(topNode != null) {
 				treeNodes.add(topNode);

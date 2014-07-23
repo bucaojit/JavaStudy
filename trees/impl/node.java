@@ -1,12 +1,12 @@
 package trees.impl;
 
 
-public class node {
-	private node leftnode;
-	private node rightnode;
+public class Node {
+	private Node leftNode;
+	private Node rightNode;
 	int data;
 	
-	public node(int data_input) {
+	public Node(int data_input) {
 		data = data_input;
 	}
 	
@@ -14,20 +14,20 @@ public class node {
 		return data;
 	}
 	
-	public node getRight() {
-		return rightnode;
+	public Node getRight() {
+		return rightNode;
 	}
 	
-	public node getLeft() {
-		return leftnode;
+	public Node getLeft() {
+		return leftNode;
 	}
 	
-	public void setRight(node insert) {
-		rightnode = insert;
+	public void setRight(Node insert) {
+		rightNode = insert;
 	}
 	
-	public void setLeft(node insert) {
-		leftnode = insert;
+	public void setLeft(Node insert) {
+		leftNode = insert;
 	}
 			
 }

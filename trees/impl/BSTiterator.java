@@ -22,7 +22,7 @@ public class BSTiterator implements Iterator<Integer> {
 		position = 0;
 	}
 	
-	public void traverseAndAdd(node current) {
+	public void traverseAndAdd(Node current) {
 		if(current == null) 
 			return;
 		traverseAndAdd(current.getLeft());

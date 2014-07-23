@@ -10,7 +10,7 @@ import java.util.Iterator;
 //    3/11 -- Taking a break to work on other things
 //    5/19 -- revisiting. need to figure out spacing calculations
 public class BSTPrintPretty2 {
-	public static void printTree(node inputNode) throws IOException {
+	public static void printTree(Node inputNode) throws IOException {
 		if(inputNode == null) {
 			//System.out.println("NULL");
 			return;
@@ -20,7 +20,7 @@ public class BSTPrintPretty2 {
 		printTree(inputNode.getRight());
 	}
 	
-	public static void printTreePretty(node inputNode) throws IOException {
+	public static void printTreePretty(Node inputNode) throws IOException {
 		if(inputNode == null) {
 			System.out.println("NULL");
 			return;
@@ -29,87 +29,87 @@ public class BSTPrintPretty2 {
 		print(inputNode, 0);
 	}
 	
-	public static void print(node inputNode, int level) {
+	public static void print(Node inputNode, int level) {
 		int height = maxHeight(inputNode);
-		int nodesInThisLevel = 1;
+		int NodesInThisLevel = 1;
 		
-		// eq of the length of branch for each node of each level
-		int nodeSpaceLen = (int)Math.pow(2.0,height);
-		int branchLength = 2*nodeSpaceLen;
-		// distance between left neighbor node's right arm and right neighbor node's left arm
-		//int nodeSpaceLen = (int)Math.pow(2.0,height);
-		// starting space to the first node to print of each level (for the left most node of each level only)
+		// eq of the length of branch for each Node of each level
+		int NodeSpaceLen = (int)Math.pow(2.0,height);
+		int branchLength = 2*NodeSpaceLen;
+		// distance between left neighbor Node's right arm and right neighbor Node's left arm
+		//int NodeSpaceLen = (int)Math.pow(2.0,height);
+		// starting space to the first Node to print of each level (for the left most Node of each level only)
 		int startLen = branchLength; 
 		
-		Deque<node> nodesQueue = new ArrayDeque<node>();
-		nodesQueue.add(inputNode);
+		Deque<Node> NodesQueue = new ArrayDeque<Node>();
+		NodesQueue.add(inputNode);
 		
 		for (int i =1; i < height; i++) {
-			printBranches(branchLength, nodeSpaceLen, startLen, nodesInThisLevel, nodesQueue);
+			printBranches(branchLength, NodeSpaceLen, startLen, NodesInThisLevel, NodesQueue);
 			branchLength = branchLength/2;
-			nodeSpaceLen = nodeSpaceLen/2;
+			NodeSpaceLen = NodeSpaceLen/2;
 			startLen = branchLength;
-			printNodes(branchLength, nodeSpaceLen, startLen, nodesInThisLevel, nodesQueue);
+			printNodes(branchLength, NodeSpaceLen, startLen, NodesInThisLevel, NodesQueue);
 			
-			for(int j = 0; j < nodesInThisLevel; j++) {
-				//node currNode = nodesQueue.getFirst();
-				node currNode = nodesQueue.pop();
+			for(int j = 0; j < NodesInThisLevel; j++) {
+				//Node currNode = NodesQueue.getFirst();
+				Node currNode = NodesQueue.pop();
 				if (currNode != null) {
-					nodesQueue.addLast(currNode.getLeft());
-					nodesQueue.addLast(currNode.getRight());
+					NodesQueue.addLast(currNode.getLeft());
+					NodesQueue.addLast(currNode.getRight());
 				}
 				else {
-					nodesQueue.addLast(null);
-					nodesQueue.addLast(null);
+					NodesQueue.addLast(null);
+					NodesQueue.addLast(null);
 				}				
 			}
-			nodesInThisLevel *= 2;
+			NodesInThisLevel *= 2;
 		}
-		printBranches(branchLength, nodeSpaceLen, startLen, nodesInThisLevel, nodesQueue);
-		printLeaves(level, nodesInThisLevel, nodesQueue);
+		printBranches(branchLength, NodeSpaceLen, startLen, NodesInThisLevel, NodesQueue);
+		printLeaves(level, NodesInThisLevel, NodesQueue);
 	}
 	
-	public static void printBranches(int branchLen, int nodeSpaceLen, int startLen, 
-			                         int nodesInThisLevel, final Deque<node> nodesQueue) {
-		Iterator<node> it = nodesQueue.iterator();
-		for (int i = 0; i < nodesInThisLevel/2; i++) {
-		    System.out.print(String.format("%" + ((i == 0) ? startLen-1 : nodeSpaceLen-2) + "s", " ") + 
+	public static void printBranches(int branchLen, int NodeSpaceLen, int startLen, 
+			                         int NodesInThisLevel, final Deque<Node> NodesQueue) {
+		Iterator<Node> it = NodesQueue.iterator();
+		for (int i = 0; i < NodesInThisLevel/2; i++) {
+		    System.out.print(String.format("%" + ((i == 0) ? startLen-1 : NodeSpaceLen-2) + "s", " ") + 
 		    		((it.equals(null)) ? "/" : " "));
 		    it.next();
 		    int length = 2*branchLen+1;
 		    System.out.print(String.format("%"+length+"s",""));
 		    System.out.print((it.equals(null) ? " " : "\\"));
-			//out << ((i == 0) ? setw(startLen-1) : setw(nodeSpaceLen-2)) << "" << ((*iter++) ? "/" : " ");
+			//out << ((i == 0) ? setw(startLen-1) : setw(NodeSpaceLen-2)) << "" << ((*iter++) ? "/" : " ");
 		    //out << setw(2*branchLen+2) << "" << ((*iter++) ? "\\" : " ");
 		}
 		System.out.println();
 	}
 	
-	public static void printLeaves(int level, int nodesInThisLevel,
-			                       Deque<node> nodesQueue) {
-		Iterator<node> it = nodesQueue.iterator();
-		for(int i = 0; i < nodesInThisLevel; i++,it.next()) {
+	public static void printLeaves(int level, int NodesInThisLevel,
+			                       Deque<Node> NodesQueue) {
+		Iterator<Node> it = NodesQueue.iterator();
+		for(int i = 0; i < NodesInThisLevel; i++,it.next()) {
 			
 		}
 		System.out.println();
 		/*
-		 *   deque<BinaryTree*>::const_iterator iter = nodesQueue.begin();
-  for (int i = 0; i < nodesInThisLevel; i++, iter++) {
+		 *   deque<BinaryTree*>::const_iterator iter = NodesQueue.begin();
+  for (int i = 0; i < NodesInThisLevel; i++, iter++) {
     out << ((i == 0) ? setw(indentSpace+2) : setw(2*level+2)) << ((*iter) ? intToString((*iter)->data) : "");
   }
   out << endl;
 		 */
 	}
 	
-	public static void printNodes(int branchLen, int nodeSpaceLen, int startLen, 
-			int nodesInThisLevel, final Deque<node>nodesQueue) {
-		Iterator<node> myIt = nodesQueue.iterator();
-		for(int i = 0; i < nodesInThisLevel; i ++) {
+	public static void printNodes(int branchLen, int NodeSpaceLen, int startLen, 
+			int NodesInThisLevel, final Deque<Node>NodesQueue) {
+		Iterator<Node> myIt = NodesQueue.iterator();
+		for(int i = 0; i < NodesInThisLevel; i ++) {
 			
 		}
 	}
 	
-	public static int maxHeight(node input) {
+	public static int maxHeight(Node input) {
 		if(input == null) 
 			return 0;
 		int leftHeight  = maxHeight(input.getLeft());

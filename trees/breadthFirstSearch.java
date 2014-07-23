@@ -7,7 +7,8 @@ import java.util.Queue;
 import java.util.Stack;
 
 import trees.impl.BST;
-import trees.impl.node;
+import trees.impl.BSTPrintTree;
+import trees.impl.Node;
 
 // 1) Coding a breadth first search
 //    -Uses a queue to store data
@@ -22,34 +23,34 @@ public class breadthFirstSearch extends BST{
 	   }
 	   
 	   //Depth-first would be the same but a Stack
-	   //  - The order of which node is which flips
+	   //  - The order of which Node is which flips
 	   //  If the queue does not have an int value, then 
 	   //  you can have a separate queue
-	   Queue<node> nodeQ = new LinkedList<node>();
-	   node currNode;
-	   node currLevel;
+	   Queue<Node> NodeQ = new LinkedList<Node>();
+	   Node currNode;
+	   Node currLevel;
 	   //int height = 1;
 	   
-	   nodeQ.add(root());
-	   node levelNode = new node(1);
-	   nodeQ.add(levelNode);
+	   NodeQ.add(root());
+	   Node levelNode = new Node(1);
+	   NodeQ.add(levelNode);
 	   
 	   System.out.println("Printing tree in BFS");
-	   while(!nodeQ.isEmpty()) {
-		   currNode = nodeQ.remove();
-		   currLevel = nodeQ.remove();
+	   while(!NodeQ.isEmpty()) {
+		   currNode = NodeQ.remove();
+		   currLevel = NodeQ.remove();
 		   
 		   System.out.println("value: " + currNode.data());
 		   System.out.println("level: " + currLevel.data());
-		   node newLevel = new node(currLevel.data() + 1);
+		   Node newLevel = new Node(currLevel.data() + 1);
 		   if (currNode.getLeft() != null) {
-			   nodeQ.add(currNode.getLeft());
-			   nodeQ.add(newLevel);
+			   NodeQ.add(currNode.getLeft());
+			   NodeQ.add(newLevel);
 			   
 		   }
 		   if (currNode.getRight() != null) {
-			   nodeQ.add(currNode.getRight());
-			   nodeQ.add(newLevel);
+			   NodeQ.add(currNode.getRight());
+			   NodeQ.add(newLevel);
 		   }
 		   
 	   }
@@ -67,7 +68,7 @@ public class breadthFirstSearch extends BST{
 		return 0;
 	}
 	
-	public int getHeight(node root) {
+	public int getHeight(Node root) {
 		if (root == null) {
 			return 0;
 		}
@@ -78,20 +79,20 @@ public class breadthFirstSearch extends BST{
 		return heightOfBinaryTree(root());
 	}
 	
-	public int heightOfBinaryTree(node node)
+	public int heightOfBinaryTree(Node Node)
 	{
-	    if (node == null)
+	    if (Node == null)
 	    {
 	        return 0;
 	    }
 	    else
 	    {
-	    	// Recurse through all the nodes and at the leaf return 0
-	    	// At every other root node you add 1 and return the greater
+	    	// Recurse through all the Nodes and at the leaf return 0
+	    	// At every other root Node you add 1 and return the greater
 	    	// of you children's heights
 	        return 1 +
-	        Math.max(heightOfBinaryTree(node.getLeft()),
-	            heightOfBinaryTree(node.getRight()));
+	        Math.max(heightOfBinaryTree(Node.getLeft()),
+	            heightOfBinaryTree(Node.getRight()));
 	    }
 	}
 	
@@ -109,6 +110,8 @@ public class breadthFirstSearch extends BST{
 		btree.insert(100);
 		btree.printTree();
 		btree.traverseNonRecursive();
+		
+		//BSTPrintTree.printmyNode(btree.root());
 		//btree.anotherPrintTree();
 		
 		Iterator<Integer> myIt = btree.iterator();
@@ -145,7 +148,7 @@ public class breadthFirstSearch extends BST{
 		System.out.println("");
 	}
 	
-	public void printTree(node root) {
+	public void printTree(Node root) {
 		// breadth first search -- fifo -- implement next
 		
 		// for now implement pre-order
@@ -169,7 +172,7 @@ public class breadthFirstSearch extends BST{
 		System.out.println("");
 	}
 	
-	public void printTreeWithLevel(node root, int level) {
+	public void printTreeWithLevel(Node root, int level) {
 		// breadth first search -- fifo -- implement next
 		
 		// for now implement pre-order
@@ -188,8 +191,8 @@ public class breadthFirstSearch extends BST{
 	
 	public breadthFirstSearch(int value) {
 		super(value);
-		//node firstnode = new node(value);
-		//tree = new BST(firstnode);
+		//Node firstNode = new Node(value);
+		//tree = new BST(firstNode);
 	}
 	
 	

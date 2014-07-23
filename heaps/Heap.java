@@ -1,5 +1,6 @@
 package heaps;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 // Program a heap complete with comparator class that can be 
@@ -27,6 +28,16 @@ public class Heap {
 		System.out.println(heap.toString());
 	}
 	
+	public void write() {
+		PrintWriter writer = null;
+		try {
+	writer = new PrintWriter("the-file-name.txt", "UTF-8");
+		} catch (Exception e) {} 
+	writer.println("The first line");
+	writer.println("The second line");
+	writer.close();
+	}
+	
 	private void addRefactor() {
 		// An item was added to the end of the array,
 		// check if it is larger than the parent, if so swap
@@ -44,6 +55,13 @@ public class Heap {
 		heap.set(secondIndex, temp);
 	}
 	
+	// Swap index 0 with the last item
+	//  REMOVE last item
+	//  refactor by checking if it is larger than children
+	//  swap if larger and continue checking until no longer swapped
+	//  OR the child size we get is > size.
+	//  As optimization, can only check if leftIndex > size because that
+	//  is less than the right Index
 	private void remRefactor() {
 		
 	}
