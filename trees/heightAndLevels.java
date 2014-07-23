@@ -2,20 +2,20 @@ package trees;
 import java.io.IOException;
 
 import trees.impl.BST;
-import trees.impl.node;
+import trees.impl.Node;
 
 public class heightAndLevels{ 
 	private BST tree;
 	
 	public heightAndLevels(int value) throws IOException {
-		node firstnode = new node(value);
-		tree = new BST(firstnode);
+		Node firstNode = new Node(value);
+		tree = new BST(firstNode);
 	}
 	
 	public void insert(int value) {
 		if (tree.root() == null) {
-			node firstnode = new node(value);
-			tree = new BST(firstnode);
+			Node firstNode = new Node(value);
+			tree = new BST(firstNode);
 		}
 		tree.insert(value);
 	}
@@ -68,11 +68,11 @@ public class heightAndLevels{
 		}
 		*/
 	}
-	boolean checkBST(node n) {
+	boolean checkBST(Node n) {
 		return checkBST(n,Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 	
-	boolean checkBST(node n, int minVal, int maxVal) {
+	boolean checkBST(Node n, int minVal, int maxVal) {
 		if (n == null) return true;
 		if(n.data() <= minVal || n.data() > maxVal) {
 			return false;
