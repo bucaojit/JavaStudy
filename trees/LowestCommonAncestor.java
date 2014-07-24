@@ -16,7 +16,23 @@ import trees.impl.Node;
 public class LowestCommonAncestor {
 	
 	// recursion -- best method for tree work
+	// Algorithm: The first value that is encountered that is in between the 
+	//            two values will be the lowest common ancestor.
+	//            so we can check if:
+	//            firstValue < value && secondValue > value 
+	//            ||
+	//            secondValue < value && firstValue > value
+	//            then it will be the lowest Common, if traversing from the root
+	//            BFS or DFS shouldn't matter 
+	                               
 	public void findLowestCommon(Node currentNode, int firstValue, int secondValue) {
+		// What is the best traversal method?
+		// We can add optimization to go where we think the value would be
+		// Follow the Binary tree properties.  
+		// -Looking for the value in-between firstValue and secondValue.  
+		//    -Does it make more sense to check only the branches that are within the range
+		//     of the values, saves unnecessary accesses, unless one value is largest
+		//     and another value is the smallest
 		
 	}
 	
