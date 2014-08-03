@@ -101,17 +101,25 @@ public class breadthFirstSearch extends BST{
 	}
 	
 	public static void main(String[] args) throws IOException {
-		breadthFirstSearch btree = new breadthFirstSearch(5);
+		breadthFirstSearch btree = new breadthFirstSearch(35);
+		btree.insert(6);
 		
 		btree.insert(7);
+		
 		btree.insert(10);
 		btree.insert(4);
 		btree.insert(3);
+		btree.insert(33);
+		
 		btree.insert(100);
+		btree.insert(110);
+		btree.insert(90);
+		btree.insert(34);
+		btree.insert(36);
 		btree.printTree();
 		btree.traverseNonRecursive();
 		
-		//BSTPrintTree.printmyNode(btree.root());
+		BSTPrintTree.print(btree.root());
 		//btree.anotherPrintTree();
 		
 		Iterator<Integer> myIt = btree.iterator();
