@@ -1,5 +1,8 @@
 package deque;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Given a set of time intervals in any order, merge all overlapping 
  * intervals into one and output the result which should have only 
@@ -30,5 +33,27 @@ package deque;
  *      4) When no more intervals to check, the stack will contain all the overlaps
  */
 public class OverlappingIntervals {
-
+	List<Interval> intervals;
+	
+	public OverlappingIntervals() {
+		intervals = new ArrayList<Interval>();
+	}
+	
+	public void sortIntervals() {
+		// Simple sort, then more complex
+	}
+	
+	public static void main (String[] arg) {
+		
+	}
+	
+	public class Interval {
+		public int begin;
+		public int end;
+		
+		public Interval(int begin, int end) {
+			this.begin = begin;
+			this.end = end;
+		}
+	}
 }
