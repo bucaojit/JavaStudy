@@ -34,6 +34,10 @@ public class BST implements Iterable<Integer>{
 			return findNode(currentNode.getLeft(), value);
 	}
 	
+	public Node generateRandomTree(int size) {
+		return new Node(0);
+	}
+	
 	// To delete, need to find the parent
 	public Node findParent(int value) {
 				
@@ -136,6 +140,18 @@ public class BST implements Iterable<Integer>{
 		int leftHeight  = maxHeight(input.getLeft());
 		int rightHeight = maxHeight(input.getRight());
 		return (leftHeight > rightHeight? leftHeight + 1 : rightHeight + 1);
+	}
+	
+	public int treeSize() {
+		return treeSize(root);
+	}
+	
+	public int treeSize(Node root) {
+		if(root == null)
+			return 0;
+		int leftHeight  = treeSize(root.getLeft());
+		int rightHeight = treeSize(root.getRight());
+		return (leftHeight + 1 + rightHeight);
 	}
 	
 	public void traverseNonRecursive() {

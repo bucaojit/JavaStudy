@@ -48,5 +48,7 @@ public class TraverseWithoutRecursion {
 		
 		BSTPrintTree.print(tree.root());
 		TraverseWithoutRecursion.traversal(tree.root());
+		
+		System.out.println("Tree Size = " + tree.treeSize());
 	}
 }

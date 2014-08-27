@@ -4,23 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+// Changed methods to static, for ease of use
+// Only drawback is loss of Logging capabilities,
+//   which is no longer necessary as tested correct
 public class arrayGen {
 	Trace LOG;
 	public arrayGen() {
 		LOG = new Trace(this.getClass().toString());
 	}
 	
-	public void swap(List<Integer> list, int indexA, int indexB) {
-		LOG.logEntry();
+	public static void swap(List<Integer> list, int indexA, int indexB) {
+		//LOG.logEntry();
 		int temp = list.get(indexA);
 		list.set(indexA, list.get(indexB));
 		list.set(indexB, temp);
-		LOG.logExit();
+		//LOG.logExit();
 	}
 	
-	public List<Integer> generate(int size) {
-		LOG.logEntry();
+	public static List<Integer> generate(int size) {
+		//LOG.logEntry();
 		// Create list
 		List<Integer> list = new ArrayList<Integer>(size);
 		for (int i = 0; i < size; i++) {
@@ -35,8 +37,8 @@ public class arrayGen {
 			//LOG.logTrace(swapIndex.toString());
 			swap(list, j, swapIndex);			
 		}
-		LOG.logDebug(list.toString());
-		LOG.logExit();
+		//LOG.logDebug(list.toString());
+		//LOG.logExit();
 		return list;
 	}
 }
