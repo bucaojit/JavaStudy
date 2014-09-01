@@ -3,8 +3,8 @@ package sortWork;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bigwavedata.utils.ArrayGen;
 import com.bigwavedata.utils.Trace;
-import com.bigwavedata.utils.arrayGen;
 import com.bigwavedata.utils.myTimer;
 
 public class TestDriver {
@@ -15,8 +15,7 @@ public class TestDriver {
 	
 	public static void main(String[] args) {
 		
-		arrayGen ag = new arrayGen();
-		List<Integer> myList = ag.generate(10000);
+		List<Integer> myList = ArrayGen.generate(10000);
 		List<Integer> myList2 = new ArrayList<Integer>(myList);
 		List<Integer> myList3 = new ArrayList<Integer>(myList);
 		List<Integer> myList4 = new ArrayList<Integer>(myList);
