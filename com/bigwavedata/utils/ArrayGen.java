@@ -1,5 +1,6 @@
 package com.bigwavedata.utils;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,9 +8,9 @@ import java.util.Random;
 // Changed methods to static, for ease of use
 // Only drawback is loss of Logging capabilities,
 //   which is no longer necessary as tested correct
-public class arrayGen {
+public class ArrayGen {
 	Trace LOG;
-	public arrayGen() {
+	public ArrayGen() {
 		LOG = new Trace(this.getClass().toString());
 	}
 	
@@ -42,3 +43,4 @@ public class arrayGen {
 		return list;
 	}
 }
+
