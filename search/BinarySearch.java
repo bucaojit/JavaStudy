@@ -3,26 +3,10 @@ package search;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Suppose a sorted array is rotated at some pivot unknown to you beforehand. 
- * (i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2). 
- * How do you find an element in the rotated array efficiently? 
- * You may assume no duplicate exists in the array.
- */
+import com.bigwavedata.utils.ArrayGen;
 
-public class BinarySearchRotated {
-	public void createArray(List<Integer> ar, int size) {
-		if(ar.size() > 0) {
-			System.out.println("WARN: Not using an empty list, clearing input list.");
-			ar.clear();
-		}
-		//ArrayList<Integer> array = new ArrayList<Integer>();
-		for(int i = 0; i < size; i++) {
-			ar.add(i);			
-		}
-		//ar = array;
-	}
-	
+public class BinarySearch {
+
 	public void rotateArray(List<Integer> ar, int rotations) {
 		if (ar.size() < 1) {
 			System.out.println("ERROR: Array size is less than 1");
@@ -45,9 +29,10 @@ public class BinarySearchRotated {
 	}
 	
 	public void createArrayRotated(List<Integer> ar, int size, int rotations) {				
-		//List<Integer> newList = new ArrayList<Integer>(size);
-		createArray(ar, size);
-		rotateArray(ar, rotations);
+		//List<Integer> ar = new ArrayList<Integer>(size);
+		ar = ArrayGen.generate(size, false);
+		//createArray(ar, size);
+		//rotateArray(ar, rotations);
 	}
 	
 	public int findIndex(List<Integer> ar, int key) {
@@ -72,35 +57,25 @@ public class BinarySearchRotated {
 		if(ar.get(midPoint) == key) return midPoint;
 		
 		if(leftIndex >= rightIndex) return -1;
-		
-		if(ar.get(midPoint) < ar.get(rightIndex)) {
-			// Right side is sorted
-			if(key >= ar.get(midPoint) && key <= ar.get(rightIndex)) 
-				return findIndex(ar, key, midPoint + 1, rightIndex);
-			else 
-				return findIndex(ar, key, leftIndex, midPoint -1);
-		}
-		else {
-			// Left side is sorted
-			if(key >= ar.get(leftIndex) && key <= ar.get(midPoint)) 
-				return findIndex(ar, key, leftIndex, midPoint - 1);
-			else
-				return findIndex(ar, key, midPoint + 1, rightIndex);
-		}
+	
+		if(key >= ar.get(midPoint) && key <= ar.get(rightIndex)) 
+			return findIndex(ar, key, midPoint + 1, rightIndex);
+		else 
+			return findIndex(ar, key, leftIndex, midPoint -1);
 	}
 	
 	public static void main(String[] args) {
-        Integer searchKey = 9;
-        Integer rotations = 2;
+        Integer searchKey = 2;
         Integer arraySize = 10;
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		BinarySearchRotated bsr = new BinarySearchRotated();
-		bsr.createArrayRotated(list, arraySize, rotations);
+        
+		List<Integer> list = ArrayGen.generate(arraySize, false);
+		BinarySearch bsrch = new BinarySearch();
+		//bsr.createArrayRotated(list, arraySize, rotations);
 		
         System.out.println("Looking for key: " + searchKey + " in array --");
         System.out.println(list.toString());
         System.out.print("The index is: ");
-        System.out.println(bsr.findIndex(list, searchKey));
+        System.out.println(bsrch.findIndex(list, searchKey));
 	}
 }
  

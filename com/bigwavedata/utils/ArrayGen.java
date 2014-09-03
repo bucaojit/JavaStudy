@@ -22,21 +22,27 @@ public class ArrayGen {
 		//LOG.logExit();
 	}
 	
-	public static List<Integer> generate(int size) {
+	public static ArrayList<Integer> generate(int size) {
+		return generate(size, true);		
+	}
+	
+	public static ArrayList<Integer> generate(int size, boolean randomize) {
 		//LOG.logEntry();
 		// Create list
-		List<Integer> list = new ArrayList<Integer>(size);
+		ArrayList<Integer> list = new ArrayList<Integer>(size);
 		for (int i = 0; i < size; i++) {
 			list.add(i);
 		}
 		
-		// Fisher-Yates shuffle
-		for (int j = size-1; j >= 0; j--) {
-			// swap the values
-			Random rand = new Random();
-			Integer swapIndex = rand.nextInt(size-1);
-			//LOG.logTrace(swapIndex.toString());
-			swap(list, j, swapIndex);			
+		if (randomize) {
+			// Fisher-Yates shuffle
+			for (int j = size-1; j >= 0; j--) {
+				// swap the values
+				Random rand = new Random();
+				Integer swapIndex = rand.nextInt(size-1);
+				//LOG.logTrace(swapIndex.toString());
+				swap(list, j, swapIndex);			
+			}
 		}
 		//LOG.logDebug(list.toString());
 		//LOG.logExit();
