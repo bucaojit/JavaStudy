@@ -134,7 +134,7 @@ public class BST implements Iterable<Integer>{
 		return maxHeight(root);
 	}
 	
-	public int maxHeight(Node input) {
+	public static int maxHeight(Node input) {
 		if(input == null) 
 			return 0;
 		int leftHeight  = maxHeight(input.getLeft());
