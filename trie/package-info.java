@@ -1,0 +1,8 @@
+/**
+ * 
+ */
+/**
+ * @author oliver
+ *
+ */
+package trie;
