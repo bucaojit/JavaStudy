@@ -15,6 +15,7 @@ Algorithm:
  *   List.subList(begin, end);
  *                begin is inclusive
  *                end is exclusive
+ *                [ begin, end )
  *                
  *   Also, during performance testing, finding that mergeSort is slower
  *   than insertionSort.  May need to add trace lines to find out the 
