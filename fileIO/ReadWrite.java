@@ -42,6 +42,8 @@ public class ReadWrite {
         System.err.format("IOException: %s%n", x);
     }
     
+    
+    
         
     // Another way to write
     try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path.toString(),true)))) {
