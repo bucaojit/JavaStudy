@@ -5,7 +5,7 @@ Repository for Java programming study questions and research
 
 Packages:
 
-**com.bigwavedata.utils**   
+**utils**   
 Useful utilities to help with programming such as a random array generator, timer class,
 show memory usage method
 
