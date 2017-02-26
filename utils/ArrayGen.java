@@ -1,4 +1,4 @@
-package com.bigwavedata.utils;
+package com.bucaojit.utils;
 
 
 import java.util.ArrayList;

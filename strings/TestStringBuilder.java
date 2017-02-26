@@ -1,7 +1,7 @@
 package strings;
 
-import com.bigwavedata.utils.MemoryUsage;
-import com.bigwavedata.utils.myTimer;
+import com.bucaojit.utils.MemoryUsage;
+import com.bucaojit.utils.myTimer;
 
 /*
 // Simple test to measure the time difference between String and StringBuilder

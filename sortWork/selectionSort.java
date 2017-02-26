@@ -2,7 +2,7 @@ package sortWork;
 
 import java.util.List;
 
-import com.bigwavedata.utils.Trace;
+import com.bucaojit.utils.Trace;
 
 // Algorithm:
 // Find the lowest index 

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.bigwavedata.utils.ArrayGen;
+import com.bucaojit.utils.ArrayGen;
 
 // Similar to Arrays.sort, Collections.sort uses Arrays.sort to do the actual sorting anyways
 // Implementing custom Comparator

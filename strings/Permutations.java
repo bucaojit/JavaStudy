@@ -1,7 +1,7 @@
 package strings;
 
-import com.bigwavedata.utils.StringUtils;
-import com.bigwavedata.utils.UserInput;
+import com.bucaojit.utils.StringUtils;
+import com.bucaojit.utils.UserInput;
 
 // Find all permutations for a given string
 public class Permutations {

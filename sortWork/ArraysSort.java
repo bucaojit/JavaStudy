@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import com.bigwavedata.utils.ArrayGen;
+import com.bucaojit.utils.ArrayGen;
 
 // Use the Arrays class to sort the given arrays
 // Will modify the comparator to sort a different way

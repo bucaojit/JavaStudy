@@ -1,4 +1,4 @@
-package com.bigwavedata.utils;
+package com.bucaojit.utils;
 
 // methods to create a timer, start and stop with output on stop
 public class myTimer {

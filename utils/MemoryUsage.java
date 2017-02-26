@@ -1,4 +1,4 @@
-package com.bigwavedata.utils;
+package com.bucaojit.utils;
 
 public class MemoryUsage {
 	public final static int MB = 1024*1024;

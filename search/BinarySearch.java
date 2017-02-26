@@ -3,7 +3,7 @@ package search;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bigwavedata.utils.ArrayGen;
+import com.bucaojit.utils.ArrayGen;
 
 public class BinarySearch {
 
